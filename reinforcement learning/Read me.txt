@@ -1,0 +1,52 @@
+Major Project 2018
+By Abdul Mohsin Siddiqi, Zaiyan Alam, Tafseer Ahmed:
+
+PREREQUISITES:
+
+Requirements:
+-Ubuntu 16.04 LTS
+-Ros-kinetic
+-Gazebo 7.0.0
+-Gym 0.8.0 (NOT latest 0.10.5)
+
+Changelog:
+-Install missing pkgs as per the "pip pkgs" of "constructsim online ros terminal" 
+-Gazebo models from Bitbucket   in ~/.gazebo/models/
+-Created Folder gazebo_model in /usr/share and transferred above models
+-ConstructSim Simulators (parrot_drone + others) from Bitbucket (+clone from constuctsim ros the following: bin and plugins in sjtu_drone folder)
+-Add Ignition missing header files (/usr/share/ignition/math/   (10 files))
+-Copied media and world from /usr/share/gazebo7 to /usr/share/gazebo
+-Externally cmake action_controller before catkin_make all pkgs
+-Changed version of gazebo in script files of parrot_ardrone/sjtu_drone
+-Include xml version in ardrone_igniteworld.world of parrot_drone/drone_construct
+
+ 
+
+Miscellaneous Commands used: 
+-killall gzserver (if existing processes running)
+-cp -R source destination/
+-curl --upload-file source destination/
+-curl -O source
+-rostopic list
+-rosparam list
+-rosdep install --from-paths src --ignore-src --rosdistro kinetic -y  (Includes necessary dependencies)
+-sudo rosdep init && rosdep update
+
+
+
+WORKING:
+
+Opening Simulation:
+1. T1: roscore
+2. T2: rosrun sjtu_drone start_gzserver
+3. T3: rosrun sjtu_drone spawn_model
+4. T3: roslaunch drone_construct main.launch
+5. T4: rosrun sjtu_drone start_gui
+
+Start Training:
+6. T5: roslaunch drone_training main.launch
+
+View Graph-Plot:
+7. cd cd catkin_ws/src/drone_training/drone_training/utils/
+8. python plot_results.py
+

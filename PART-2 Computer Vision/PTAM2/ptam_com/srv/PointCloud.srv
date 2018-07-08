@@ -1,3 +1,0 @@
-uint32 flags
----
-sensor_msgs/PointCloud2 pointcloud
